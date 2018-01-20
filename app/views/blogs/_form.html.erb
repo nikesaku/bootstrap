@@ -1,0 +1,25 @@
+<%= form_with(model: @blog, local: true ,url: choose_new_or_edit ) do |form| %>
+<% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+    <ul>
+
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= form.label :title %>
+      <%= form.text_field :title %></h3>
+  </div>
+  <div class="panel-body">
+    <p><%= form.label :content %>
+      <%= form.text_field :content %></p>
+  </div>
+</div>
+<%= form.submit %>
+<% end %>

@@ -1,0 +1,22 @@
+<h3>以下の内容で、送信する。</h3>
+
+<%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">title:<%= @blog.title %></h3>
+    </div>
+    <div class="panel-body">
+      <p>content:<%= @blog.content %></p>
+    </div>
+  </div>
+  <%= form.submit "登録する" %>
+  <% end %>
+
+  <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content %>
+  <%= form.submit "もどる", name: 'back' %>
+<% end %>
