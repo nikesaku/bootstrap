@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get '/webpages', to: 'webpages#index'
 
   resources :users, only: [:new, :create, :show]
+
+  resources :favorites, only: [:create, :destroy]
 end

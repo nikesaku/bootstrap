@@ -19,6 +19,7 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def create
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     if @blog.save
       redirect_to articles_blogs_path, notice: 'ブログを作成しました！'
     else
@@ -27,6 +28,7 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
 
   def edit
@@ -47,7 +49,6 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def confirm
     @blog = Blog.new(blog_params)
-    render :new if @blog.invalid?
   end
 
   private
@@ -58,10 +59,6 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def set_blog
     @blog = Blog.find(params[:id])
-  end
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
   end
 
   def demand_login
