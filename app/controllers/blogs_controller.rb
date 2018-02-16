@@ -64,12 +64,8 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
-  def logged_in?
-    !current_user.nil?
-  end
-
   def demand_login
-    unless logged_in?
+    unless !current_user.nil?
       flash[:danger] = 'ログインしてください'
       redirect_to new_session_path
     end
