@@ -11,6 +11,10 @@ ul{
 
 body{
   background-color: rgba(105, 108, 46, 0.07);
+  position: relative;
+  height: auto !important;
+  height: 100%;
+  min-height: 100%;
 }
 
 .header{
@@ -25,6 +29,10 @@ body{
 .footer{
   background-color: #ffffff;
   text-align: center;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 .logoimage{
