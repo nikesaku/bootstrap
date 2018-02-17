@@ -29,6 +29,8 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
 
   def show
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
+    @post = Blog.find_by(id: params[:id])
+    @user = User.find_by(id: @post.user_id)
   end
 
   def edit
