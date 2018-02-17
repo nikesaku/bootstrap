@@ -21,6 +21,7 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
     if @blog.save
+      BlogMailer.blog_mail(@blog).deliver
       redirect_to articles_blogs_path, notice: 'ブログを作成しました！'
     else
       render 'new'
