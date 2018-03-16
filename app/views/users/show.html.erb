@@ -1,6 +1,7 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
+<p>ユーザーアイコン: <%= image_tag @user.image if @user.image.present? %></p>
 <h2><%= @user.name %>がお気に入り登録したブログ一覧</h2>
 <% @favorites_blogs.each do |blog| %>
   <div class="panel panel-default col-md-3">
