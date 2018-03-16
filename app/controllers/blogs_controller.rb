@@ -20,7 +20,7 @@ before_action :set_blog, only: [:show, :edit, :update, :destroy]
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id
-    @blog.image.retrieve_from_cache! params[:cache][:image]
+    @blog.image.retrieve_from_cache! params[:cache][:image] if params[:cache][:image].present?
     if @blog.save
       BlogMailer.blog_mail(@blog).deliver
       redirect_to articles_blogs_path, notice: 'ブログを作成しました！'

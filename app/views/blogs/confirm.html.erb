@@ -12,7 +12,7 @@
       <p>content:<%= @blog.content %></p>
     </div>
     <div>
-      <%= image_tag(@blog.image.url) %>
+      <%= image_tag(@blog.image.url) if @blog.image.present? %>
       <%= hidden_field_tag :"cache[image]",@blog.image.cache_name %>
     </div>
   </div>
